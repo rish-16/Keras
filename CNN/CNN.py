@@ -13,10 +13,6 @@ classes = 10
 epochs = 5
 img_rows, img_cols = 28, 28
 
-# input image dimensions
-img_rows, img_cols = 28, 28
-
-# the data, shuffled and split between train and test sets
 (X_train, y_train), (X_test, y_test) = mnist.load_data()
 
 if keras.backend.image_data_format() == 'channels_first':
