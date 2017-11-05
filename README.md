@@ -2,5 +2,5 @@
 Keras experiments playground: Learning the 'Keras on Tensorflow' ML Framework from scratch.
 
 ## Contents
-*Dense Artificial Neural Network (DenseANN)
-*Deep Convolutional Neural Network (CNN)
+1. Dense Artificial Neural Network (DenseANN)
+2. Deep Convolutional Neural Network (CNN)
