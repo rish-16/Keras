@@ -44,15 +44,9 @@ model.add(Dropout(0.5))
 model.add(Dense(classes, activation='softmax'))
 model.summary()
 
-model.compile(loss=keras.losses.categorical_crossentropy,
-              optimizer=keras.optimizers.Adadelta(),
-              metrics=['accuracy'])
+model.compile(loss='categorical_crossentropy', optimizer='adadelta', metrics=['accuracy'])
 
-model.fit(X_train, y_train,
-          batch_size=batch_size,
-          epochs=epochs,
-          verbose=1,
-          validation_data=(X_test, y_test))
+model.fit(X_train, y_train, batch_size=batch_size, epochs=epochs, verbose=1, validation_data=(X_test, y_test))
 
 model_json = model.to_json()
 with open("model.json", "w") as json_file:
