@@ -17,6 +17,11 @@ noisy_X_test = []
 # Adding noise to training images
 for i in range(len(X_test)):
 	noisy_image = skimage.util.random_noise(X_test[i], mode='gaussian', seed=None, clip=True)
+	noisy_image = skimage.util.random_noise(noisy_image, mode='speckle', seed=None, clip=True)
+	noisy_image = skimage.util.random_noise(noisy_image, mode='poisson', seed=None, clip=True)
+	noisy_image = skimage.util.random_noise(noisy_image, mode='s&p', seed=None, clip=True)
+	noisy_image = skimage.util.random_noise(noisy_image, mode='salt', seed=None, clip=True)
+	noisy_image = skimage.util.random_noise(noisy_image, mode='pepper', seed=None, clip=True)
 	noisy_X_test.append(noisy_image)
 
 noisy_X_test = np.array(noisy_X_test, dtype=np.float32)

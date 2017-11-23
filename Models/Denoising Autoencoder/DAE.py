@@ -20,6 +20,11 @@ noisy_X_train = []
 for i in range(len(X_train)):
 	try:
 		noisy_image = skimage.util.random_noise(X_train[i], mode='gaussian', seed=None, clip=True)
+		noisy_image = skimage.util.random_noise(noisy_image, mode='speckle', seed=None, clip=True)
+		noisy_image = skimage.util.random_noise(noisy_image, mode='poisson', seed=None, clip=True)
+		noisy_image = skimage.util.random_noise(noisy_image, mode='s&p', seed=None, clip=True)
+		noisy_image = skimage.util.random_noise(noisy_image, mode='salt', seed=None, clip=True)
+		noisy_image = skimage.util.random_noise(noisy_image, mode='pepper', seed=None, clip=True)
 		noisy_X_train.append(noisy_image)
 	except:
 		pass
