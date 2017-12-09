@@ -1,6 +1,6 @@
 import numpy as np
 import keras
-from keras.datasets import mnist
+from keras.datasets import cifar10
 from keras.models import Sequential
 from keras.layers.core import Dense, Dropout, Activation, Flatten
 from keras.utils import np_utils
@@ -11,18 +11,18 @@ np.random.seed(100)
 batch_size = 128
 classes = 10
 epochs = 5
-img_rows, img_cols = 28, 28
+img_rows, img_cols = 32, 32
 
-(X_train, y_train), (X_test, y_test) = mnist.load_data()
+(X_train, y_train), (X_test, y_test) = cifar10.load_data()
 
 if keras.backend.image_data_format() == 'channels_first':
-    X_train = X_train.reshape(X_train.shape[0], 1, img_rows, img_cols)
-    X_test = X_test.reshape(X_test.shape[0], 1, img_rows, img_cols)
-    input_shape = (1, img_rows, img_cols)
+    X_train = X_train.reshape(X_train.shape[0], 3, img_rows, img_cols)
+    X_test = X_test.reshape(X_test.shape[0], 3, img_rows, img_cols)
+    input_shape = (3, img_rows, img_cols)
 else:
-    X_train = X_train.reshape(X_train.shape[0], img_rows, img_cols, 1)
-    X_test = X_test.reshape(X_test.shape[0], img_rows, img_cols, 1)
-    input_shape = (img_rows, img_cols, 1)
+    X_train = X_train.reshape(X_train.shape[0], img_rows, img_cols, 3)
+    X_test = X_test.reshape(X_test.shape[0], img_rows, img_cols, 3)
+    input_shape = (img_rows, img_cols, 3)
 
 X_train = X_train.astype('float32')
 X_test = X_test.astype('float32')
@@ -49,7 +49,7 @@ model.compile(loss='categorical_crossentropy', optimizer='adadelta', metrics=['a
 model.fit(X_train, y_train, batch_size=batch_size, epochs=epochs, verbose=1, validation_data=(X_test, y_test))
 
 model_json = model.to_json()
-with open("model.json", "w") as json_file:
+with open("model2.json", "w") as json_file:
 	json_file.write(model_json)
-model.save_weights("model.h5")
+model.save_weights("model2.h5")
 print("Saved model to disk")
