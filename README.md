@@ -7,3 +7,4 @@ Keras experiments playground: Learning the 'Keras on Tensorflow' ML Framework fr
 3. Autoencoder
 4. Denoising Autoencoder
 5. Deep Residual Network 
+6. TensorBoard
